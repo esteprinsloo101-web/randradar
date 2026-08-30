@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-08-30T20:55:00+02:00",
+  "province": "Western Cape",
+  "disclaimer": "Prices from public catalogues and flight aggregators. Confirm in-store or at checkout. Catalogue week mostly 27 Aug–6 Sep 2026.",
+  "deals": [
+    {"category": "grocery", "item": "Riversmead Farm fresh whole chicken", "merchant": "Checkers", "price": "R47.99", "was": null, "expires": "2026-09-06", "source": "https://www.cataloguespecials.co.za/specials/chicken/checkers"},
+    {"category": "grocery", "item": "Simple Truth free-range whole chicken", "merchant": "Checkers", "price": "R49.99", "was": null, "expires": "2026-09-06", "source": "https://www.cataloguespecials.co.za/specials/chicken/checkers"},
+    {"category": "grocery", "item": "Farmer's Choice whole chicken in tray", "merchant": "Checkers", "price": "R54.99", "was": null, "expires": "2026-09-06", "source": "https://www.cataloguespecials.co.za/specials/farmer-s-choice/checkers"},
+    {"category": "grocery", "item": "Crystal Valley fresh milk", "merchant": "Checkers", "price": "R27.99", "was": "R34.99", "expires": "2026-09-06", "source": "https://www.cataloguespecials.co.za/specials/milk/checkers"},
+    {"category": "grocery", "item": "Parmalat Gouda/Cheddar 850g", "merchant": "Checkers", "price": "R239.00", "was": "R350.00", "expires": "2026-09-06", "source": "https://www.cataloguespecials.co.za/specials/parmalat/checkers"},
+    {"category": "grocery", "item": "Choice Fuji/Granny Smith apples", "merchant": "Checkers", "price": "R24.99", "was": null, "expires": "2026-09-06", "source": "https://www.cataloguespecials.co.za/specials/choice/checkers"},
+    {"category": "flights", "item": "Cape Town → Johannesburg one-way", "merchant": "FlySafair via aggregators", "price": "from R1,230", "was": null, "expires": "check tonight", "source": "https://www.cheapflights.co.za/flights/Cape-Town-CPT/Johannesburg-JNB.FA.ksp"},
+    {"category": "flights", "item": "Cheapest month CPT-JNB", "merchant": "FlySafair", "price": "September from ~€56 / ~R1,100-class one-way", "was": "August higher", "expires": "2026-09", "source": "https://zbordirect.com/en/low-cost/from-south-africa/to-south-africa/cape-town-johannesburg"}
+  ]
+}

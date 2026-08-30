@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>RandRadar — more month left</title>
+<style>
+:root{--ink:#10231c;--green:#0f7b5a;--lime:#c8f27a;--bg:#f4f7f4;--muted:#4d6258;--line:#d7e3dc}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.5}
+header{background:var(--ink);color:#eef6f1;padding:28px 20px}
+header strong{color:var(--lime)}
+main{max-width:720px;margin:0 auto;padding:24px 20px 64px}
+h1{font-size:34px;letter-spacing:-.03em;margin:8px 0 12px}
+.lead{color:#b7c9c0;max-width:520px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:10px 0}
+.cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:700}
+.price{font-weight:700;color:var(--green)}
+.was{text-decoration:line-through;color:var(--muted);font-size:13px;margin-left:8px}
+.fine{font-size:13px;color:var(--muted);margin-top:18px}
+a{color:var(--green)}
+</style>
+</head>
+<body>
+<header>
+<div class="cat">Western Cape · 30 Aug 2026</div>
+<h1>Every special.<br>One alert.<br><strong>More month left.</strong></h1>
+<p class="lead">RandRadar hunts grocery, flight and stay specials and drafts a WhatsApp you can paste after work. Public board stays free.</p>
+</header>
+<main>
+<p>Today's board from public Checkers catalogues (to 6 Sep) and FlySafair aggregator ranges. Confirm at the till.</p>
+<div id="board"></div>
+<p class="fine">Affiliate links may earn a commission later. The price you pay does not go up. Not financial advice. Stellenbosch.</p>
+<p class="fine"><a href="digest.md">Copy-paste digest</a> · <a href="https://github.com/esteprinsloo101-web/randradar">Source</a></p>
+</main>
+<script>
+fetch('deals.json').then(r=>r.json()).then(data=>{
+  const root=document.getElementById('board');
+  data.deals.forEach(d=>{
+    const el=document.createElement('article');
+    el.className='card';
+    el.innerHTML=`<div class="cat">${d.category} · ${d.merchant}</div>
+      <div>${d.item}</div>
+      <div><span class="price">${d.price}</span>${d.was?`<span class="was">${d.was}</span>`:''}</div>
+      <div class="fine">Until ${d.expires}</div>`;
+    root.appendChild(el);
+  });
+}).catch(()=>{
+  document.getElementById('board').textContent='Board failed to load. Open deals.json.';
+});
+</script>
+</body>
+</html>
