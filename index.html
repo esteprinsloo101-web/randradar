@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
-<meta name="description" content="RandRadar — find SA sales, specials and promos by area. Food, diesel, groceries, travel, accommodation. Every special. One alert. More month left."/>
+<meta name="description" content="RandRadar — weekly Johannesburg area digest for groceries, diesel/petrol, travel and stays. DEMO samples. Every special. One alert. More month left."/>
 <meta name="theme-color" content="#10231c"/>
-<title>RandRadar — Every special. One alert. More month left.</title>
+<title>RandRadar — Johannesburg weekly digest</title>
 <style>
 :root{
   --ink:#10231c; --green:#0f7b5a; --lime:#c8f27a; --bg:#f3f7f4;
-  --card:#ffffff; --muted:#4d6258; --line:#d7e3dc; --warn:#8a5a00;
-  --warn-bg:#fff6e0; --demo:#7a3e00; --demo-bg:#ffe8c8; --shadow:0 8px 24px rgba(16,35,28,.08);
+  --card:#ffffff; --muted:#4d6258; --line:#d7e3dc;
+  --demo:#7a3e00; --demo-bg:#ffe8c8; --shadow:0 8px 24px rgba(16,35,28,.08);
   --radius:16px; --safe-b:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -19,34 +19,29 @@ body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;bac
 a{color:var(--green)}
 button,input,select,textarea{font:inherit}
 .wrap{max-width:720px;margin:0 auto;padding:0 16px 96px}
-
-/* Header */
 .hero{background:linear-gradient(165deg,#0c1c16 0%,#16362b 55%,#1a4636 100%);color:#eef6f1;padding:28px 16px 22px;border-radius:0 0 24px 24px}
 .brand-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
 .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
 .logo-mark{width:36px;height:36px;border-radius:10px;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-size:18px;font-weight:900}
 .tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9bb5a8}
-h1{font-size:clamp(1.55rem,5vw,2.05rem);letter-spacing:-.03em;line-height:1.15;margin:6px 0 10px;font-weight:800}
-h1 strong{color:var(--lime);font-weight:800}
-.lead{color:#b7c9c0;font-size:.95rem;max-width:34rem}
+h1{font-size:clamp(1.5rem,5vw,2rem);letter-spacing:-.03em;line-height:1.15;margin:6px 0 10px;font-weight:800}
+h1 strong{color:var(--lime)}
+.lead{color:#b7c9c0;font-size:.95rem;max-width:36rem}
 .demo-banner{margin-top:14px;background:rgba(200,242,122,.12);border:1px solid rgba(200,242,122,.35);color:#e8f7c8;border-radius:12px;padding:10px 12px;font-size:.85rem}
 .demo-banner b{color:var(--lime)}
-
-/* Sticky tools */
 .tools{position:sticky;top:0;z-index:20;background:rgba(243,247,244,.92);backdrop-filter:blur(10px);padding:12px 0 8px;border-bottom:1px solid transparent}
 .tools.stuck{border-bottom-color:var(--line);box-shadow:0 4px 16px rgba(16,35,28,.06)}
 .search{width:100%;padding:12px 14px 12px 40px;border:1px solid var(--line);border-radius:14px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%234d6258' stroke-width='2'%3E%3Ccircle cx='8' cy='8' r='6'/%3E%3Cpath d='M13 13l3.5 3.5'/%3E%3C/svg%3E") 12px 50% no-repeat;outline:none}
 .search:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(15,123,90,.15)}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 2px 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.chip-label{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .chips::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600;cursor:pointer;transition:.15s}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
 .meta-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 4px;font-size:.85rem;color:var(--muted)}
 .tabs{display:flex;gap:6px}
 .tab{border:none;background:transparent;color:var(--muted);font-weight:700;padding:6px 10px;border-radius:10px;cursor:pointer}
 .tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
-
-/* Cards */
 #board{display:grid;gap:12px;margin-top:8px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 14px 12px;box-shadow:var(--shadow);display:grid;gap:8px}
 .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
@@ -69,8 +64,6 @@ h1 strong{color:var(--lime);font-weight:800}
 .btn-primary{background:var(--green);color:#fff}
 .btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
 .empty{text-align:center;padding:36px 16px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:var(--radius)}
-
-/* Tip form */
 .panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:18px 0;box-shadow:var(--shadow)}
 .panel h3{font-size:1.05rem;margin-bottom:6px}
 .panel p.sub{color:var(--muted);font-size:.9rem;margin-bottom:12px}
@@ -82,12 +75,11 @@ h1 strong{color:var(--lime);font-weight:800}
 @media(max-width:520px){.form-row{grid-template-columns:1fr}}
 .toast{position:fixed;left:50%;bottom:calc(18px + var(--safe-b));transform:translateX(-50%) translateY(120%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:999px;font-size:.9rem;font-weight:600;z-index:50;transition:transform .25s ease;max-width:90vw;text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0)}
-
-/* Pro CTA soft */
 .pro{margin:20px 0;background:linear-gradient(135deg,#16362b,#0f7b5a);color:#eef6f1;border-radius:18px;padding:18px 16px;display:grid;gap:8px}
 .pro h3{font-size:1.1rem}
+.pro .price-tag{display:inline-block;background:var(--lime);color:var(--ink);font-weight:900;padding:4px 10px;border-radius:999px;font-size:.85rem;width:fit-content}
 .pro p{color:#c5dcd0;font-size:.92rem}
-.pro .btn{background:var(--lime);color:var(--ink);width:fit-content;margin-top:4px}
+.pro .btn{background:#fff;color:var(--ink);width:fit-content;margin-top:4px}
 .fine{font-size:.78rem;color:var(--muted);margin:16px 0 8px;line-height:1.5}
 footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 </style>
@@ -97,19 +89,25 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
   <div class="wrap" style="padding-bottom:0">
     <div class="brand-row">
       <div class="logo"><span class="logo-mark" aria-hidden="true">R</span><span>RandRadar</span></div>
-      <div class="tag">South Africa</div>
+      <div class="tag">Johannesburg metro</div>
     </div>
     <h1>Every special.<br>One alert.<br><strong>More month left.</strong></h1>
-    <p class="lead">Hunt food, diesel, grocery, travel and stay specials by area. Public board stays free — Pro desk coming later.</p>
-    <div class="demo-banner" role="status"><b>DEMO data:</b> Sample deals for layout only — not live scraped prices. Always confirm at the till / checkout.</div>
+    <p class="lead">Weekly area digest board for Joburg metro — groceries, diesel/petrol (regulation-day framing), travel and stays. Public board stays free.</p>
+    <div class="demo-banner" role="status"><b>DEMO data:</b> Example deals for layout only — not a live 7-retailer price engine, not scraped pump/till truth. Always confirm before you buy.</div>
   </div>
 </header>
 
 <main class="wrap">
   <div class="tools" id="tools">
-    <label class="sr-only" for="q" style="position:absolute;left:-9999px">Search area or deal</label>
+    <label for="q" style="position:absolute;left:-9999px">Search area or deal</label>
     <input id="q" class="search" type="search" placeholder="Search area, store, or deal…" autocomplete="off" enterkeyhint="search"/>
-    <div class="chips" id="chips" role="toolbar" aria-label="Categories"></div>
+
+    <div class="chip-label">Joburg areas</div>
+    <div class="chips" id="area-chips" role="toolbar" aria-label="Johannesburg areas"></div>
+
+    <div class="chip-label">Categories</div>
+    <div class="chips" id="cat-chips" role="toolbar" aria-label="Categories"></div>
+
     <div class="meta-bar">
       <span id="count">Loading…</span>
       <div class="tabs" role="tablist">
@@ -123,20 +121,32 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 
   <section class="panel" id="tip" aria-labelledby="tip-h">
     <h3 id="tip-h">Submit a tip</h3>
-    <p class="sub">Spotted a special? Save it on this device and download a JSON export. Tips stay local until a desk sync exists — no scraping, no login required.</p>
+    <p class="sub">Spotted a Joburg special? Save on this device and download JSON. Local only — no login scraping.</p>
     <form class="form" id="tip-form">
-      <label>Title<input name="title" required maxlength="120" placeholder="e.g. Whole chicken tray"/></label>
+      <label>Title<input name="title" required maxlength="120" placeholder="e.g. Cooking oil 2L"/></label>
       <div class="form-row">
         <label>Category
           <select name="category" required>
-            <option>Food</option><option>Diesel</option><option>Groceries</option>
-            <option>Travel</option><option>Accommodation</option><option>Other</option>
+            <option>Groceries</option>
+            <option>Diesel/Petrol</option>
+            <option>Travel</option>
+            <option>Accommodation</option>
+            <option>Other</option>
           </select>
         </label>
-        <label>Area<input name="area" required maxlength="80" placeholder="e.g. Cape Town"/></label>
+        <label>Area
+          <select name="area" required>
+            <option>Sandton</option>
+            <option>Midrand</option>
+            <option>Pretoria East</option>
+            <option>Centurion</option>
+            <option>Soweto</option>
+            <option>Roodepoort</option>
+          </select>
+        </label>
       </div>
       <div class="form-row">
-        <label>Price / saving<input name="price" required maxlength="40" placeholder="e.g. R49.99"/></label>
+        <label>Price / saving<input name="price" required maxlength="40" placeholder="e.g. R54.99"/></label>
         <label>Store<input name="store" maxlength="80" placeholder="e.g. Checkers"/></label>
       </div>
       <div class="form-row">
@@ -151,15 +161,16 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
     </form>
   </section>
 
-  <aside class="pro" aria-label="Pro desk coming soon">
-    <h3>Pro desk — coming soon</h3>
-    <p>Area digests, WhatsApp-ready boards, and quieter morning alerts. Browsing this board stays free. No paywall on specials.</p>
-    <button type="button" class="btn" id="pro-cta">Notify me later</button>
+  <aside class="pro" aria-label="R99 Pro weekly pack coming soon">
+    <span class="price-tag">R99 / week · Coming soon</span>
+    <h3>Pro weekly pack</h3>
+    <p>WhatsApp-ready Joburg digest, diesel/petrol regulation-day notes, and quieter alerts. Gumroad checkout later. This public board stays free — no paywall on browsing.</p>
+    <button type="button" class="btn" id="pro-cta">Notify me when Pro opens</button>
   </aside>
 
-  <p class="fine">Affiliate links may earn a commission later; the price you pay does not go up. Not financial advice. COI-safe: no Eco Rehab or Jories selling on this board. Confirm every price in-store or at checkout.</p>
+  <p class="fine">Affiliate links may earn a commission later; the price you pay does not go up. Not financial advice. COI-safe: no Eco Rehab or Jories selling on this board. Confirm every price in-store or at the pump.</p>
   <footer>
-    Faceless brand · RandRadar ·
+    Faceless brand · RandRadar · Johannesburg scout wedge ·
     <a href="https://github.com/esteprinsloo101-web/randradar">Source</a> ·
     <a href="https://esteprinsloo101-web.github.io/randradar/">Live board</a>
   </footer>
@@ -169,21 +180,24 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 
 <script>
 (function () {
-  const CATS = ["All", "Food", "Diesel", "Groceries", "Travel", "Accommodation", "Other"];
+  const AREAS = ["All areas", "Sandton", "Midrand", "Pretoria East", "Centurion", "Soweto", "Roodepoort"];
+  const CATS = ["All", "Groceries", "Diesel/Petrol", "Travel", "Accommodation", "Other"];
   const WISH_KEY = "randradar_wishlist_v1";
   const TIPS_KEY = "randradar_tips_v1";
   const PRO_KEY = "randradar_pro_interest_v1";
 
   const state = {
     deals: [],
+    area: "All areas", // default metro is Joburg; all seed deals are Joburg metro
     cat: "All",
     q: "",
-    view: "all", // all | wish
+    view: "all",
     wish: loadWish(),
   };
 
   const board = document.getElementById("board");
-  const chips = document.getElementById("chips");
+  const areaChips = document.getElementById("area-chips");
+  const catChips = document.getElementById("cat-chips");
   const countEl = document.getElementById("count");
   const qEl = document.getElementById("q");
   const toastEl = document.getElementById("toast");
@@ -218,20 +232,29 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
       .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
-  function buildChips() {
-    chips.innerHTML = "";
-    CATS.forEach((c) => {
+  function buildChipRow(el, items, selected, onPick) {
+    el.innerHTML = "";
+    items.forEach((c) => {
       const b = document.createElement("button");
       b.type = "button";
       b.className = "chip";
       b.textContent = c;
-      b.setAttribute("aria-pressed", c === state.cat ? "true" : "false");
-      b.addEventListener("click", () => {
-        state.cat = c;
-        buildChips();
-        render();
-      });
-      chips.appendChild(b);
+      b.setAttribute("aria-pressed", c === selected ? "true" : "false");
+      b.addEventListener("click", () => onPick(c));
+      el.appendChild(b);
+    });
+  }
+
+  function buildChips() {
+    buildChipRow(areaChips, AREAS, state.area, (c) => {
+      state.area = c;
+      buildChips();
+      render();
+    });
+    buildChipRow(catChips, CATS, state.cat, (c) => {
+      state.cat = c;
+      buildChips();
+      render();
     });
   }
 
@@ -239,9 +262,10 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
     const q = state.q.trim().toLowerCase();
     return state.deals.filter((d) => {
       if (state.view === "wish" && !state.wish.has(d.id)) return false;
+      if (state.area !== "All areas" && d.area !== state.area) return false;
       if (state.cat !== "All" && d.category !== state.cat) return false;
       if (!q) return true;
-      const hay = [d.title, d.area, d.province, d.store, d.category, d.note, d.price]
+      const hay = [d.title, d.area, d.province, d.store, d.category, d.note, d.price, d.metro]
         .join(" ").toLowerCase();
       return hay.includes(q);
     });
@@ -284,12 +308,12 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
     const list = filtered();
     countEl.textContent = state.view === "wish"
       ? `${list.length} saved · ${state.wish.size} in wishlist`
-      : `${list.length} of ${state.deals.length} deals`;
+      : `${list.length} of ${state.deals.length} · Joburg weekly digest (DEMO)`;
     if (!list.length) {
       board.innerHTML = `<div class="empty">${
         state.view === "wish"
           ? "Wishlist empty — tap ♡ on a deal to save it on this device."
-          : "No matches. Try another area or category."
+          : "No matches in this Joburg area/category. Try All areas."
       }</div>`;
       return;
     }
@@ -335,8 +359,9 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
     const tip = {
       id: "tip-" + Date.now(),
       demo: true,
+      metro: "Johannesburg",
       title: String(fd.get("title") || "").trim(),
-      category: String(fd.get("category") || "Other"),
+      category: normalizeCat(String(fd.get("category") || "Other")),
       area: String(fd.get("area") || "").trim(),
       price: String(fd.get("price") || "").trim(),
       store: String(fd.get("store") || "").trim(),
@@ -345,13 +370,12 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
       note: String(fd.get("note") || "").trim() || "User tip (local only) — confirm price yourself.",
       saving: null,
       was: null,
-      province: "",
+      province: "Gauteng",
       submitted_at: new Date().toISOString(),
     };
     const tips = loadTips();
     tips.unshift(tip);
     saveTips(tips);
-    // Also surface tip in this session board (marked DEMO)
     state.deals.unshift(tip);
     e.target.reset();
     toast("Tip saved on this device");
@@ -360,7 +384,7 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 
   document.getElementById("export-tips").addEventListener("click", () => {
     const tips = loadTips();
-    const blob = new Blob([JSON.stringify({ exported_at: new Date().toISOString(), tips }, null, 2)], {
+    const blob = new Blob([JSON.stringify({ exported_at: new Date().toISOString(), metro: "Johannesburg", tips }, null, 2)], {
       type: "application/json",
     });
     const a = document.createElement("a");
@@ -372,11 +396,10 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
   });
 
   document.getElementById("pro-cta").addEventListener("click", () => {
-    localStorage.setItem(PRO_KEY, JSON.stringify({ interested: true, at: new Date().toISOString() }));
-    toast("Noted — Pro desk coming soon. Board stays free.");
+    localStorage.setItem(PRO_KEY, JSON.stringify({ interested: true, pack: "R99 weekly", at: new Date().toISOString() }));
+    toast("Noted — R99 Pro weekly pack coming soon. Board stays free.");
   });
 
-  // Sticky visual
   const io = new IntersectionObserver(
     ([e]) => tools.classList.toggle("stuck", e.intersectionRatio < 1),
     { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
@@ -394,20 +417,20 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
       const deals = (data.deals || []).map((d, i) => ({
         id: d.id || "deal-" + i,
         demo: d.demo !== false,
+        metro: d.metro || "Johannesburg",
         title: d.title || d.item || "Untitled deal",
         category: normalizeCat(d.category),
-        area: d.area || d.province || "South Africa",
-        province: d.province || "",
+        area: d.area || "Sandton",
+        province: d.province || "Gauteng",
         price: d.price || "—",
         was: d.was || null,
         saving: d.saving || null,
         store: d.store || d.merchant || "",
         valid_until: d.valid_until || d.expires || "",
         source: d.source || "",
-        note: d.note || (d.demo !== false ? "DEMO / example data — not live scraped truth." : ""),
+        note: d.note || "DEMO / example data — not live scraped truth.",
       }));
-      // Merge any previously saved tips into board
-      const tips = loadTips();
+      const tips = loadTips().map((t) => ({ ...t, category: normalizeCat(t.category) }));
       state.deals = [...tips, ...deals];
       render();
     })
@@ -418,14 +441,12 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 
   function normalizeCat(c) {
     const s = String(c || "Other").toLowerCase();
-    if (s.includes("food")) return "Food";
-    if (s === "grocery" || s.includes("grocer")) return "Groceries";
-    if (s.includes("diesel") || s.includes("fuel") || s.includes("petrol")) return "Diesel";
-    if (s.includes("flight") || s.includes("travel") || s.includes("coach") || s.includes("car")) return "Travel";
+    if (s.includes("diesel") || s.includes("fuel") || s.includes("petrol")) return "Diesel/Petrol";
+    if (s.includes("grocer") || s === "food" || s.includes("food")) return "Groceries";
+    if (s.includes("flight") || s.includes("travel") || s.includes("coach") || s.includes("car") || s.includes("gautrain")) return "Travel";
     if (s.includes("accom") || s.includes("stay") || s.includes("hotel") || s.includes("lodge")) return "Accommodation";
-    if (s === "food") return "Food";
-    const map = { food: "Food", diesel: "Diesel", groceries: "Groceries", travel: "Travel", accommodation: "Accommodation", other: "Other" };
-    return map[s] || (["Food","Diesel","Groceries","Travel","Accommodation","Other"].includes(c) ? c : "Other");
+    if (["Groceries","Diesel/Petrol","Travel","Accommodation","Other"].includes(c)) return c;
+    return "Other";
   }
 })();
 </script>

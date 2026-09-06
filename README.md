@@ -2,7 +2,7 @@
 
 **Every special. One alert. More month left.**
 
-Faceless South African deals board: find sales, specials and promos by area for food, diesel/fuel, groceries, travel, accommodation, and other.
+Faceless **Johannesburg metro** weekly area digest board — groceries, diesel/petrol (regulation-day framing), travel and accommodation. Public board stays free.
 
 ## Live board
 
@@ -10,50 +10,51 @@ Faceless South African deals board: find sales, specials and promos by area for 
 
 GitHub Pages deploys from `main` / repository root (`index.html` + `deals.json`).
 
+## Scout wedge (MVP)
+
+- **Default metro:** Johannesburg
+- **Area chips:** Sandton, Midrand, Pretoria East, Centurion, Soweto, Roodepoort
+- **Categories:** Groceries · Diesel/Petrol · Travel · Accommodation · Other
+- **Positioning:** weekly area digest board — **not** a live 7-retailer price engine
+- **Seed data:** DEMO / example only (`demo: true` on every deal)
+- **Soft CTA:** R99 Pro weekly pack — Coming soon (Gumroad later). Browsing never paywalled.
+
 ## How it works
 
-1. Open the live board on a phone or desktop.
-2. **Search** by area, store, or deal text (e.g. Cape Town, diesel, chicken).
-3. Tap **category chips**: Food, Diesel, Groceries, Travel, Accommodation, Other.
-4. Read **deal cards**: title, category, area, price/saving, store, valid-until, source link, note.
-5. Tap ♡ to **wishlist** deals (saved in `localStorage` on your device).
-6. **Submit a tip** → stored in `localStorage` and exportable as JSON (`Download tips JSON`).
-7. Soft **Pro desk coming soon** CTA — browsing is never paywalled.
+1. Open the live board (mobile-first).
+2. Filter by **Joburg area chips** and **category chips**; search by text.
+3. Deal cards show title, category, area, price/saving, store, valid-until, source link, note + **DEMO** badge.
+4. ♡ **Wishlist** → `localStorage` on device.
+5. **Submit a tip** → `localStorage` + **Download tips JSON**.
+6. Soft Pro CTA records interest locally — no payment yet.
 
-### Data model (`deals.json`)
+### Data (`deals.json`)
 
-Each deal includes fields such as `id`, `title`, `category`, `area`, `province`, `price`, `was`, `saving`, `store`, `valid_until`, `source`, `note`, and **`demo: true`**.
+Fields include `id`, `title`, `category`, `area`, `province`, `metro`, `price`, `was`, `saving`, `store`, `valid_until`, `source`, `note`, **`demo: true`**.
 
-**CRITICAL:** Seed deals are **DEMO / example data** for UI and layout. They are **not** live scraped prices. Confirm every price in-store or at checkout. The board banners this clearly.
-
-### Tips & wishlist
-
-- Wishlist key: `randradar_wishlist_v1`
-- Tips key: `randradar_tips_v1`
-- Tips stay on-device until a future desk sync exists. Export downloads `randradar-tips.json`.
+Confirm every price in-store or at the pump. Never invent live rand figures as truth.
 
 ## Local preview
 
 ```bash
-# from repo root
 python3 -m http.server 8080
-# open http://localhost:8080
+# http://localhost:8080
 ```
 
-Or open `index.html` via any static host. `fetch('deals.json')` needs HTTP (not `file://`).
+`fetch('deals.json')` needs HTTP (not `file://`).
 
 ## Operating rules (`BOT.md`)
 
 - Do **not** invent live rand figures as truth.
-- Do **not** scrape logins or private accounts.
+- Do **not** scrape logins.
+- Label DEMO seed clearly.
 - COI-safe: no Eco Rehab or Jories selling on this board.
-- Affiliate disclosure later; price paid does not go up.
-- Digest bot drafts only — humans paste / send.
+- Affiliate disclosure later.
 
 ## Money rails
 
-See `MONEY.md` (Travelstart / Booking / SafariNow affiliates, Paystack Radar+ later, Pages already on).
+See `MONEY.md`. Pro weekly pack (R99) via Gumroad later; Travelstart / Booking / SafariNow affiliates when approved.
 
 ## Stack
 
-Vanilla HTML / CSS / JS. No build step. Mobile-first static SPA-like page.
+Vanilla HTML / CSS / JS. No build step.
