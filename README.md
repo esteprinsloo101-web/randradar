@@ -1,25 +1,59 @@
 # RandRadar
 
-Every special. One alert. More month left.
+**Every special. One alert. More month left.**
 
-South African household savings board. Grocery catalogues are the daily habit. Travel and shopping affiliates are how the business gets paid. Public digest stays free.
+Faceless South African deals board: find sales, specials and promos by area for food, diesel/fuel, groceries, travel, accommodation, and other.
 
-**Live repo:** https://github.com/esteprinsloo101-web/randradar  
-**Public site (after Pages is on):** https://esteprinsloo101-web.github.io/randradar/
+## Live board
 
-## How it runs
+**https://esteprinsloo101-web.github.io/randradar/**
 
-A Grok automation (`RandRadar 06:30 digest bot`) collects public catalogue prices and flight ranges every morning at 06:30 Africa/Johannesburg, writes a board, and drafts WhatsApp + X copy. Este pastes after work. The bot does not send, post, or spend.
+GitHub Pages deploys from `main` / repository root (`index.html` + `deals.json`).
 
-Payments: Paystack / affiliate later. Not Stripe.
+## How it works
 
-## Files
+1. Open the live board on a phone or desktop.
+2. **Search** by area, store, or deal text (e.g. Cape Town, diesel, chicken).
+3. Tap **category chips**: Food, Diesel, Groceries, Travel, Accommodation, Other.
+4. Read **deal cards**: title, category, area, price/saving, store, valid-until, source link, note.
+5. Tap ♡ to **wishlist** deals (saved in `localStorage` on your device).
+6. **Submit a tip** → stored in `localStorage` and exportable as JSON (`Download tips JSON`).
+7. Soft **Pro desk coming soon** CTA — browsing is never paywalled.
 
-- `index.html` — public board
-- `deals.json` — today's verified-enough specials
-- `digest.md` — copy-paste WhatsApp + X
-- `BOT.md` — operating rules
+### Data model (`deals.json`)
 
-## Rules
+Each deal includes fields such as `id`, `title`, `category`, `area`, `province`, `price`, `was`, `saving`, `store`, `valid_until`, `source`, `note`, and **`demo: true`**.
 
-Do not invent prices. Do not scrape behind logins. Disclose affiliate links. Day job stays protected.
+**CRITICAL:** Seed deals are **DEMO / example data** for UI and layout. They are **not** live scraped prices. Confirm every price in-store or at checkout. The board banners this clearly.
+
+### Tips & wishlist
+
+- Wishlist key: `randradar_wishlist_v1`
+- Tips key: `randradar_tips_v1`
+- Tips stay on-device until a future desk sync exists. Export downloads `randradar-tips.json`.
+
+## Local preview
+
+```bash
+# from repo root
+python3 -m http.server 8080
+# open http://localhost:8080
+```
+
+Or open `index.html` via any static host. `fetch('deals.json')` needs HTTP (not `file://`).
+
+## Operating rules (`BOT.md`)
+
+- Do **not** invent live rand figures as truth.
+- Do **not** scrape logins or private accounts.
+- COI-safe: no Eco Rehab or Jories selling on this board.
+- Affiliate disclosure later; price paid does not go up.
+- Digest bot drafts only — humans paste / send.
+
+## Money rails
+
+See `MONEY.md` (Travelstart / Booking / SafariNow affiliates, Paystack Radar+ later, Pages already on).
+
+## Stack
+
+Vanilla HTML / CSS / JS. No build step. Mobile-first static SPA-like page.

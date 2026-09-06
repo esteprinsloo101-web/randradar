@@ -20,3 +20,8 @@ Send email. Post to X. Spend ads. Use Stripe. Touch Eco Rehab or Jories selling.
 - Booking.com / CJ
 - SafariNow
 - GitHub Pages toggle on this repo
+
+## Public board data
+- Seed `deals.json` entries must stay labelled **DEMO** (`demo: true`).
+- Never invent a rand figure as live-scraped truth. Catalogue quotes need human confirm.
+- No login scraping. Affiliate disclosure later. COI-safe (no Eco Rehab / Jories selling).
