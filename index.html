@@ -2,52 +2,453 @@
 <html lang="en-ZA">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>RandRadar — more month left</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<meta name="description" content="RandRadar — weekly Johannesburg area digest for groceries, diesel/petrol, travel and stays. DEMO samples. Every special. One alert. More month left."/>
+<meta name="theme-color" content="#10231c"/>
+<title>RandRadar — Johannesburg weekly digest</title>
 <style>
-:root{--ink:#10231c;--green:#0f7b5a;--lime:#c8f27a;--bg:#f4f7f4;--muted:#4d6258;--line:#d7e3dc}
+:root{
+  --ink:#10231c; --green:#0f7b5a; --lime:#c8f27a; --bg:#f3f7f4;
+  --card:#ffffff; --muted:#4d6258; --line:#d7e3dc;
+  --demo:#7a3e00; --demo-bg:#ffe8c8; --shadow:0 8px 24px rgba(16,35,28,.08);
+  --radius:16px; --safe-b:env(safe-area-inset-bottom,0px);
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Georgia,serif;background:var(--bg);color:var(--ink);line-height:1.5}
-header{background:var(--ink);color:#eef6f1;padding:28px 20px}
-header strong{color:var(--lime)}
-main{max-width:720px;margin:0 auto;padding:24px 20px 64px}
-h1{font-size:34px;letter-spacing:-.03em;margin:8px 0 12px}
-.lead{color:#b7c9c0;max-width:520px}
-.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin:10px 0}
-.cat{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green);font-weight:700}
-.price{font-weight:700;color:var(--green)}
-.was{text-decoration:line-through;color:var(--muted);font-size:13px;margin-left:8px}
-.fine{font-size:13px;color:var(--muted);margin-top:18px}
+html{-webkit-text-size-adjust:100%}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Ubuntu,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45;min-height:100dvh}
 a{color:var(--green)}
+button,input,select,textarea{font:inherit}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px 96px}
+.hero{background:linear-gradient(165deg,#0c1c16 0%,#16362b 55%,#1a4636 100%);color:#eef6f1;padding:28px 16px 22px;border-radius:0 0 24px 24px}
+.brand-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+.logo-mark{width:36px;height:36px;border-radius:10px;background:var(--lime);color:var(--ink);display:grid;place-items:center;font-size:18px;font-weight:900}
+.tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#9bb5a8}
+h1{font-size:clamp(1.5rem,5vw,2rem);letter-spacing:-.03em;line-height:1.15;margin:6px 0 10px;font-weight:800}
+h1 strong{color:var(--lime)}
+.lead{color:#b7c9c0;font-size:.95rem;max-width:36rem}
+.demo-banner{margin-top:14px;background:rgba(200,242,122,.12);border:1px solid rgba(200,242,122,.35);color:#e8f7c8;border-radius:12px;padding:10px 12px;font-size:.85rem}
+.demo-banner b{color:var(--lime)}
+.tools{position:sticky;top:0;z-index:20;background:rgba(243,247,244,.92);backdrop-filter:blur(10px);padding:12px 0 8px;border-bottom:1px solid transparent}
+.tools.stuck{border-bottom-color:var(--line);box-shadow:0 4px 16px rgba(16,35,28,.06)}
+.search{width:100%;padding:12px 14px 12px 40px;border:1px solid var(--line);border-radius:14px;background:var(--card) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='none' stroke='%234d6258' stroke-width='2'%3E%3Ccircle cx='8' cy='8' r='6'/%3E%3Cpath d='M13 13l3.5 3.5'/%3E%3C/svg%3E") 12px 50% no-repeat;outline:none}
+.search:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(15,123,90,.15)}
+.chip-label{font-size:.72rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:10px 0 4px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:999px;padding:8px 14px;font-size:.85rem;font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+.meta-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin:10px 0 4px;font-size:.85rem;color:var(--muted)}
+.tabs{display:flex;gap:6px}
+.tab{border:none;background:transparent;color:var(--muted);font-weight:700;padding:6px 10px;border-radius:10px;cursor:pointer}
+.tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:var(--shadow)}
+#board{display:grid;gap:12px;margin-top:8px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px 14px 12px;box-shadow:var(--shadow);display:grid;gap:8px}
+.card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.badges{display:flex;flex-wrap:wrap;gap:6px}
+.badge{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:800;border-radius:999px;padding:4px 8px}
+.badge-cat{background:#e6f5ee;color:var(--green)}
+.badge-demo{background:var(--demo-bg);color:var(--demo)}
+.heart{border:1px solid var(--line);background:#fff;width:40px;height:40px;border-radius:12px;cursor:pointer;font-size:18px;line-height:1;flex-shrink:0}
+.heart.on{background:#fff0f0;border-color:#f0b0b0;color:#c0392b}
+.card h2{font-size:1.05rem;letter-spacing:-.02em;line-height:1.25}
+.price-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.price{font-weight:800;color:var(--green);font-size:1.15rem}
+.was{text-decoration:line-through;color:var(--muted);font-size:.9rem}
+.saving{font-size:.8rem;font-weight:700;color:#1a6b3c;background:#e8f8ee;padding:3px 8px;border-radius:999px}
+.facts{display:grid;gap:4px;font-size:.88rem;color:var(--muted)}
+.facts strong{color:var(--ink);font-weight:600}
+.note{font-size:.82rem;color:var(--muted);background:#f7faf8;border-radius:10px;padding:8px 10px}
+.card-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border-radius:12px;padding:10px 14px;font-weight:700;font-size:.9rem;text-decoration:none;border:1px solid transparent;cursor:pointer}
+.btn-primary{background:var(--green);color:#fff}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
+.empty{text-align:center;padding:36px 16px;color:var(--muted);background:#fff;border:1px dashed var(--line);border-radius:var(--radius)}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px;margin:18px 0;box-shadow:var(--shadow)}
+.panel h3{font-size:1.05rem;margin-bottom:6px}
+.panel p.sub{color:var(--muted);font-size:.9rem;margin-bottom:12px}
+.form{display:grid;gap:10px}
+.form label{display:grid;gap:4px;font-size:.82rem;font-weight:700;color:var(--muted)}
+.form input,.form select,.form textarea{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:12px;background:#fbfcfb}
+.form textarea{min-height:80px;resize:vertical}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:520px){.form-row{grid-template-columns:1fr}}
+.toast{position:fixed;left:50%;bottom:calc(18px + var(--safe-b));transform:translateX(-50%) translateY(120%);background:var(--ink);color:#fff;padding:12px 16px;border-radius:999px;font-size:.9rem;font-weight:600;z-index:50;transition:transform .25s ease;max-width:90vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0)}
+.pro{margin:20px 0;background:linear-gradient(135deg,#16362b,#0f7b5a);color:#eef6f1;border-radius:18px;padding:18px 16px;display:grid;gap:8px}
+.pro h3{font-size:1.1rem}
+.pro .price-tag{display:inline-block;background:var(--lime);color:var(--ink);font-weight:900;padding:4px 10px;border-radius:999px;font-size:.85rem;width:fit-content}
+.pro p{color:#c5dcd0;font-size:.92rem}
+.pro .btn{background:#fff;color:var(--ink);width:fit-content;margin-top:4px}
+.fine{font-size:.78rem;color:var(--muted);margin:16px 0 8px;line-height:1.5}
+footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 </style>
 </head>
 <body>
-<header>
-<div class="cat">Western Cape · 30 Aug 2026</div>
-<h1>Every special.<br>One alert.<br><strong>More month left.</strong></h1>
-<p class="lead">RandRadar hunts grocery, flight and stay specials and drafts a WhatsApp you can paste after work. Public board stays free.</p>
+<header class="hero">
+  <div class="wrap" style="padding-bottom:0">
+    <div class="brand-row">
+      <div class="logo"><span class="logo-mark" aria-hidden="true">R</span><span>RandRadar</span></div>
+      <div class="tag">Johannesburg metro</div>
+    </div>
+    <h1>Every special.<br>One alert.<br><strong>More month left.</strong></h1>
+    <p class="lead">Weekly area digest board for Joburg metro — groceries, diesel/petrol (regulation-day framing), travel and stays. Public board stays free.</p>
+    <div class="demo-banner" role="status"><b>DEMO data:</b> Example deals for layout only — not a live 7-retailer price engine, not scraped pump/till truth. Always confirm before you buy.</div>
+  </div>
 </header>
-<main>
-<p>Today's board from public Checkers catalogues (to 6 Sep) and FlySafair aggregator ranges. Confirm at the till.</p>
-<div id="board"></div>
-<p class="fine">Affiliate links may earn a commission later. The price you pay does not go up. Not financial advice. Stellenbosch.</p>
-<p class="fine"><a href="digest.md">Copy-paste digest</a> · <a href="https://github.com/esteprinsloo101-web/randradar">Source</a></p>
+
+<main class="wrap">
+  <div class="tools" id="tools">
+    <label for="q" style="position:absolute;left:-9999px">Search area or deal</label>
+    <input id="q" class="search" type="search" placeholder="Search area, store, or deal…" autocomplete="off" enterkeyhint="search"/>
+
+    <div class="chip-label">Joburg areas</div>
+    <div class="chips" id="area-chips" role="toolbar" aria-label="Johannesburg areas"></div>
+
+    <div class="chip-label">Categories</div>
+    <div class="chips" id="cat-chips" role="toolbar" aria-label="Categories"></div>
+
+    <div class="meta-bar">
+      <span id="count">Loading…</span>
+      <div class="tabs" role="tablist">
+        <button type="button" class="tab" id="tab-all" role="tab" aria-selected="true">All</button>
+        <button type="button" class="tab" id="tab-wish" role="tab" aria-selected="false">Wishlist</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="board" aria-live="polite"></div>
+
+  <section class="panel" id="tip" aria-labelledby="tip-h">
+    <h3 id="tip-h">Submit a tip</h3>
+    <p class="sub">Spotted a Joburg special? Save on this device and download JSON. Local only — no login scraping.</p>
+    <form class="form" id="tip-form">
+      <label>Title<input name="title" required maxlength="120" placeholder="e.g. Cooking oil 2L"/></label>
+      <div class="form-row">
+        <label>Category
+          <select name="category" required>
+            <option>Groceries</option>
+            <option>Diesel/Petrol</option>
+            <option>Travel</option>
+            <option>Accommodation</option>
+            <option>Other</option>
+          </select>
+        </label>
+        <label>Area
+          <select name="area" required>
+            <option>Sandton</option>
+            <option>Midrand</option>
+            <option>Pretoria East</option>
+            <option>Centurion</option>
+            <option>Soweto</option>
+            <option>Roodepoort</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-row">
+        <label>Price / saving<input name="price" required maxlength="40" placeholder="e.g. R54.99"/></label>
+        <label>Store<input name="store" maxlength="80" placeholder="e.g. Checkers"/></label>
+      </div>
+      <div class="form-row">
+        <label>Valid until<input name="valid_until" type="date"/></label>
+        <label>Source link<input name="source" type="url" placeholder="https://…"/></label>
+      </div>
+      <label>Note<textarea name="note" maxlength="280" placeholder="Optional context (brand, pack size, T&Cs)"></textarea></label>
+      <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <button type="submit" class="btn btn-primary">Save tip locally</button>
+        <button type="button" class="btn btn-ghost" id="export-tips">Download tips JSON</button>
+      </div>
+    </form>
+  </section>
+
+  <aside class="pro" aria-label="R99 Pro weekly pack coming soon">
+    <span class="price-tag">R99 / week · Coming soon</span>
+    <h3>Pro weekly pack</h3>
+    <p>WhatsApp-ready Joburg digest, diesel/petrol regulation-day notes, and quieter alerts. Gumroad checkout later. This public board stays free — no paywall on browsing.</p>
+    <button type="button" class="btn" id="pro-cta">Notify me when Pro opens</button>
+  </aside>
+
+  <p class="fine">Affiliate links may earn a commission later; the price you pay does not go up. Not financial advice. COI-safe: no Eco Rehab or Jories selling on this board. Confirm every price in-store or at the pump.</p>
+  <footer>
+    Faceless brand · RandRadar · Johannesburg scout wedge ·
+    <a href="https://github.com/esteprinsloo101-web/randradar">Source</a> ·
+    <a href="https://esteprinsloo101-web.github.io/randradar/">Live board</a>
+  </footer>
 </main>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
-fetch('deals.json').then(r=>r.json()).then(data=>{
-  const root=document.getElementById('board');
-  data.deals.forEach(d=>{
-    const el=document.createElement('article');
-    el.className='card';
-    el.innerHTML=`<div class="cat">${d.category} · ${d.merchant}</div>
-      <div>${d.item}</div>
-      <div><span class="price">${d.price}</span>${d.was?`<span class="was">${d.was}</span>`:''}</div>
-      <div class="fine">Until ${d.expires}</div>`;
-    root.appendChild(el);
+(function () {
+  const AREAS = ["All areas", "Sandton", "Midrand", "Pretoria East", "Centurion", "Soweto", "Roodepoort"];
+  const CATS = ["All", "Groceries", "Diesel/Petrol", "Travel", "Accommodation", "Other"];
+  const WISH_KEY = "randradar_wishlist_v1";
+  const TIPS_KEY = "randradar_tips_v1";
+  const PRO_KEY = "randradar_pro_interest_v1";
+
+  const state = {
+    deals: [],
+    area: "All areas", // default metro is Joburg; all seed deals are Joburg metro
+    cat: "All",
+    q: "",
+    view: "all",
+    wish: loadWish(),
+  };
+
+  const board = document.getElementById("board");
+  const areaChips = document.getElementById("area-chips");
+  const catChips = document.getElementById("cat-chips");
+  const countEl = document.getElementById("count");
+  const qEl = document.getElementById("q");
+  const toastEl = document.getElementById("toast");
+  const tools = document.getElementById("tools");
+
+  function loadWish() {
+    try { return new Set(JSON.parse(localStorage.getItem(WISH_KEY) || "[]")); }
+    catch { return new Set(); }
+  }
+  function saveWish() {
+    localStorage.setItem(WISH_KEY, JSON.stringify([...state.wish]));
+  }
+  function loadTips() {
+    try { return JSON.parse(localStorage.getItem(TIPS_KEY) || "[]"); }
+    catch { return []; }
+  }
+  function saveTips(list) {
+    localStorage.setItem(TIPS_KEY, JSON.stringify(list));
+  }
+
+  let toastTimer;
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
+  }
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function buildChipRow(el, items, selected, onPick) {
+    el.innerHTML = "";
+    items.forEach((c) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip";
+      b.textContent = c;
+      b.setAttribute("aria-pressed", c === selected ? "true" : "false");
+      b.addEventListener("click", () => onPick(c));
+      el.appendChild(b);
+    });
+  }
+
+  function buildChips() {
+    buildChipRow(areaChips, AREAS, state.area, (c) => {
+      state.area = c;
+      buildChips();
+      render();
+    });
+    buildChipRow(catChips, CATS, state.cat, (c) => {
+      state.cat = c;
+      buildChips();
+      render();
+    });
+  }
+
+  function filtered() {
+    const q = state.q.trim().toLowerCase();
+    return state.deals.filter((d) => {
+      if (state.view === "wish" && !state.wish.has(d.id)) return false;
+      if (state.area !== "All areas" && d.area !== state.area) return false;
+      if (state.cat !== "All" && d.category !== state.cat) return false;
+      if (!q) return true;
+      const hay = [d.title, d.area, d.province, d.store, d.category, d.note, d.price, d.metro]
+        .join(" ").toLowerCase();
+      return hay.includes(q);
+    });
+  }
+
+  function cardHTML(d) {
+    const saved = state.wish.has(d.id);
+    const demo = d.demo !== false;
+    return `
+      <article class="card" data-id="${esc(d.id)}">
+        <div class="card-top">
+          <div class="badges">
+            <span class="badge badge-cat">${esc(d.category)}</span>
+            ${demo ? '<span class="badge badge-demo">DEMO</span>' : ""}
+          </div>
+          <button type="button" class="heart ${saved ? "on" : ""}" data-wish="${esc(d.id)}"
+            aria-label="${saved ? "Remove from wishlist" : "Save to wishlist"}" aria-pressed="${saved}">
+            ${saved ? "♥" : "♡"}
+          </button>
+        </div>
+        <h2>${esc(d.title)}</h2>
+        <div class="price-row">
+          <span class="price">${esc(d.price)}</span>
+          ${d.was ? `<span class="was">${esc(d.was)}</span>` : ""}
+          ${d.saving ? `<span class="saving">${esc(d.saving)}</span>` : ""}
+        </div>
+        <div class="facts">
+          <div><strong>Area:</strong> ${esc(d.area)}${d.province ? " · " + esc(d.province) : ""}</div>
+          <div><strong>Store:</strong> ${esc(d.store || "—")}</div>
+          <div><strong>Valid until:</strong> ${esc(d.valid_until || "check source")}</div>
+        </div>
+        ${d.note ? `<p class="note">${esc(d.note)}</p>` : ""}
+        <div class="card-actions">
+          ${d.source ? `<a class="btn btn-primary" href="${esc(d.source)}" target="_blank" rel="noopener noreferrer">Open source</a>` : ""}
+        </div>
+      </article>`;
+  }
+
+  function render() {
+    const list = filtered();
+    countEl.textContent = state.view === "wish"
+      ? `${list.length} saved · ${state.wish.size} in wishlist`
+      : `${list.length} of ${state.deals.length} · Joburg weekly digest (DEMO)`;
+    if (!list.length) {
+      board.innerHTML = `<div class="empty">${
+        state.view === "wish"
+          ? "Wishlist empty — tap ♡ on a deal to save it on this device."
+          : "No matches in this Joburg area/category. Try All areas."
+      }</div>`;
+      return;
+    }
+    board.innerHTML = list.map(cardHTML).join("");
+  }
+
+  board.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-wish]");
+    if (!btn) return;
+    const id = btn.getAttribute("data-wish");
+    if (state.wish.has(id)) {
+      state.wish.delete(id);
+      toast("Removed from wishlist");
+    } else {
+      state.wish.add(id);
+      toast("Saved to wishlist");
+    }
+    saveWish();
+    render();
   });
-}).catch(()=>{
-  document.getElementById('board').textContent='Board failed to load. Open deals.json.';
-});
+
+  qEl.addEventListener("input", () => {
+    state.q = qEl.value;
+    render();
+  });
+
+  document.getElementById("tab-all").addEventListener("click", () => {
+    state.view = "all";
+    document.getElementById("tab-all").setAttribute("aria-selected", "true");
+    document.getElementById("tab-wish").setAttribute("aria-selected", "false");
+    render();
+  });
+  document.getElementById("tab-wish").addEventListener("click", () => {
+    state.view = "wish";
+    document.getElementById("tab-all").setAttribute("aria-selected", "false");
+    document.getElementById("tab-wish").setAttribute("aria-selected", "true");
+    render();
+  });
+
+  document.getElementById("tip-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    const tip = {
+      id: "tip-" + Date.now(),
+      demo: true,
+      metro: "Johannesburg",
+      title: String(fd.get("title") || "").trim(),
+      category: normalizeCat(String(fd.get("category") || "Other")),
+      area: String(fd.get("area") || "").trim(),
+      price: String(fd.get("price") || "").trim(),
+      store: String(fd.get("store") || "").trim(),
+      valid_until: String(fd.get("valid_until") || ""),
+      source: String(fd.get("source") || "").trim(),
+      note: String(fd.get("note") || "").trim() || "User tip (local only) — confirm price yourself.",
+      saving: null,
+      was: null,
+      province: "Gauteng",
+      submitted_at: new Date().toISOString(),
+    };
+    const tips = loadTips();
+    tips.unshift(tip);
+    saveTips(tips);
+    state.deals.unshift(tip);
+    e.target.reset();
+    toast("Tip saved on this device");
+    render();
+  });
+
+  document.getElementById("export-tips").addEventListener("click", () => {
+    const tips = loadTips();
+    const blob = new Blob([JSON.stringify({ exported_at: new Date().toISOString(), metro: "Johannesburg", tips }, null, 2)], {
+      type: "application/json",
+    });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "randradar-tips.json";
+    a.click();
+    URL.revokeObjectURL(a.href);
+    toast(tips.length ? `Exported ${tips.length} tip(s)` : "No tips yet — empty file downloaded");
+  });
+
+  document.getElementById("pro-cta").addEventListener("click", () => {
+    localStorage.setItem(PRO_KEY, JSON.stringify({ interested: true, pack: "R99 weekly", at: new Date().toISOString() }));
+    toast("Noted — R99 Pro weekly pack coming soon. Board stays free.");
+  });
+
+  const io = new IntersectionObserver(
+    ([e]) => tools.classList.toggle("stuck", e.intersectionRatio < 1),
+    { threshold: [1], rootMargin: "-1px 0px 0px 0px" }
+  );
+  io.observe(tools);
+
+  buildChips();
+
+  fetch("deals.json")
+    .then((r) => {
+      if (!r.ok) throw new Error("deals.json missing");
+      return r.json();
+    })
+    .then((data) => {
+      const deals = (data.deals || []).map((d, i) => ({
+        id: d.id || "deal-" + i,
+        demo: d.demo !== false,
+        metro: d.metro || "Johannesburg",
+        title: d.title || d.item || "Untitled deal",
+        category: normalizeCat(d.category),
+        area: d.area || "Sandton",
+        province: d.province || "Gauteng",
+        price: d.price || "—",
+        was: d.was || null,
+        saving: d.saving || null,
+        store: d.store || d.merchant || "",
+        valid_until: d.valid_until || d.expires || "",
+        source: d.source || "",
+        note: d.note || "DEMO / example data — not live scraped truth.",
+      }));
+      const tips = loadTips().map((t) => ({ ...t, category: normalizeCat(t.category) }));
+      state.deals = [...tips, ...deals];
+      render();
+    })
+    .catch(() => {
+      board.innerHTML = `<div class="empty">Board failed to load. Check <code>deals.json</code>.</div>`;
+      countEl.textContent = "Load error";
+    });
+
+  function normalizeCat(c) {
+    const s = String(c || "Other").toLowerCase();
+    if (s.includes("diesel") || s.includes("fuel") || s.includes("petrol")) return "Diesel/Petrol";
+    if (s.includes("grocer") || s === "food" || s.includes("food")) return "Groceries";
+    if (s.includes("flight") || s.includes("travel") || s.includes("coach") || s.includes("car") || s.includes("gautrain")) return "Travel";
+    if (s.includes("accom") || s.includes("stay") || s.includes("hotel") || s.includes("lodge")) return "Accommodation";
+    if (["Groceries","Diesel/Petrol","Travel","Accommodation","Other"].includes(c)) return c;
+    return "Other";
+  }
+})();
 </script>
 </body>
 </html>

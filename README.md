@@ -1,25 +1,60 @@
 # RandRadar
 
-Every special. One alert. More month left.
+**Every special. One alert. More month left.**
 
-South African household savings board. Grocery catalogues are the daily habit. Travel and shopping affiliates are how the business gets paid. Public digest stays free.
+Faceless **Johannesburg metro** weekly area digest board — groceries, diesel/petrol (regulation-day framing), travel and accommodation. Public board stays free.
 
-**Live repo:** https://github.com/esteprinsloo101-web/randradar  
-**Public site (after Pages is on):** https://esteprinsloo101-web.github.io/randradar/
+## Live board
 
-## How it runs
+**https://esteprinsloo101-web.github.io/randradar/**
 
-A Grok automation (`RandRadar 06:30 digest bot`) collects public catalogue prices and flight ranges every morning at 06:30 Africa/Johannesburg, writes a board, and drafts WhatsApp + X copy. Este pastes after work. The bot does not send, post, or spend.
+GitHub Pages deploys from `main` / repository root (`index.html` + `deals.json`).
 
-Payments: Paystack / affiliate later. Not Stripe.
+## Scout wedge (MVP)
 
-## Files
+- **Default metro:** Johannesburg
+- **Area chips:** Sandton, Midrand, Pretoria East, Centurion, Soweto, Roodepoort
+- **Categories:** Groceries · Diesel/Petrol · Travel · Accommodation · Other
+- **Positioning:** weekly area digest board — **not** a live 7-retailer price engine
+- **Seed data:** DEMO / example only (`demo: true` on every deal)
+- **Soft CTA:** R99 Pro weekly pack — Coming soon (Gumroad later). Browsing never paywalled.
 
-- `index.html` — public board
-- `deals.json` — today's verified-enough specials
-- `digest.md` — copy-paste WhatsApp + X
-- `BOT.md` — operating rules
+## How it works
 
-## Rules
+1. Open the live board (mobile-first).
+2. Filter by **Joburg area chips** and **category chips**; search by text.
+3. Deal cards show title, category, area, price/saving, store, valid-until, source link, note + **DEMO** badge.
+4. ♡ **Wishlist** → `localStorage` on device.
+5. **Submit a tip** → `localStorage` + **Download tips JSON**.
+6. Soft Pro CTA records interest locally — no payment yet.
 
-Do not invent prices. Do not scrape behind logins. Disclose affiliate links. Day job stays protected.
+### Data (`deals.json`)
+
+Fields include `id`, `title`, `category`, `area`, `province`, `metro`, `price`, `was`, `saving`, `store`, `valid_until`, `source`, `note`, **`demo: true`**.
+
+Confirm every price in-store or at the pump. Never invent live rand figures as truth.
+
+## Local preview
+
+```bash
+python3 -m http.server 8080
+# http://localhost:8080
+```
+
+`fetch('deals.json')` needs HTTP (not `file://`).
+
+## Operating rules (`BOT.md`)
+
+- Do **not** invent live rand figures as truth.
+- Do **not** scrape logins.
+- Label DEMO seed clearly.
+- COI-safe: no Eco Rehab or Jories selling on this board.
+- Affiliate disclosure later.
+
+## Money rails
+
+See `MONEY.md`. Pro weekly pack (R99) via Gumroad later; Travelstart / Booking / SafariNow affiliates when approved.
+
+## Stack
+
+Vanilla HTML / CSS / JS. No build step.
