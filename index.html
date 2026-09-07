@@ -162,10 +162,11 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
   </section>
 
   <aside class="pro" aria-label="R99 Pro weekly pack coming soon">
-    <span class="price-tag">R99 / week · Coming soon</span>
+    <span class="price-tag">Need a live pack now?</span>
     <h3>Pro weekly pack</h3>
-    <p>WhatsApp-ready Joburg digest, diesel/petrol regulation-day notes, and quieter alerts. Gumroad checkout later. This public board stays free — no paywall on browsing.</p>
+    <p>WhatsApp-ready Joburg digest, diesel/petrol regulation-day notes, and quieter alerts. This public board stays free — no paywall on browsing. Pro pack publishing soon; for a live Plain Desk purchase now, get <a href="https://stofficial.gumroad.com/l/ydbgne" target="_blank" rel="noopener noreferrer">Stokvel OS · R199</a>.</p>
     <button type="button" class="btn" id="pro-cta">Notify me when Pro opens</button>
+    <p style="margin:0.75rem 0 0;font-size:0.85rem;opacity:0.9"><a href="https://stofficial.gumroad.com/l/ydbgne" target="_blank" rel="noopener noreferrer">Get a live Plain Desk pack · Stokvel OS R199</a></p>
   </aside>
 
   <p class="fine">Affiliate links may earn a commission later; the price you pay does not go up. Not financial advice. COI-safe: no Eco Rehab or Jories selling on this board. Confirm every price in-store or at the pump.</p>
@@ -397,7 +398,7 @@ footer{padding:8px 0 24px;font-size:.8rem;color:var(--muted)}
 
   document.getElementById("pro-cta").addEventListener("click", () => {
     localStorage.setItem(PRO_KEY, JSON.stringify({ interested: true, pack: "R99 weekly", at: new Date().toISOString() }));
-    toast("Noted — R99 Pro weekly pack coming soon. Board stays free.");
+    toast("Noted — R99 Pro coming soon. Board stays free. Stokvel OS is live now.");
   });
 
   const io = new IntersectionObserver(
