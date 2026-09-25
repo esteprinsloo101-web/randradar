@@ -6,6 +6,6 @@
 | RandRadar 07:15 marketing desk | Daily 07:15 SAST | X + WA + IG + referral paste pack |
 | RandRadar Wednesday campaign bot | Wed 07:20 SAST | 7-day calendar |
 
-No X Ads account is connected. Bots do not spend. Bots do not auto-post to X (no posting connector). Este pastes after work.
+No X Ads account is connected. Bots do not spend. Bots do not auto-post to X (no posting connector). A human pastes after hours.
 
-Voice / Meta WhatsApp API / HubSpot blasts need extra setup. Do not turn those on during the day job.
+Voice / Meta WhatsApp API / HubSpot blasts need extra setup. Do not turn those on without the operator's go-ahead.

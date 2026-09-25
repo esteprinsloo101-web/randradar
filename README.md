@@ -48,7 +48,6 @@ python3 -m http.server 8080
 - Do **not** invent live rand figures as truth.
 - Do **not** scrape logins.
 - Label DEMO seed clearly.
-- COI-safe: no Eco Rehab or Jories selling on this board.
 - Affiliate disclosure later.
 
 ## Money rails

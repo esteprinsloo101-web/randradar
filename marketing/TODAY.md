@@ -1,8 +1,8 @@
 # RandRadar marketing pack · Sunday 30 August 2026
 
-Bots write this. Este pastes after work. Do not invent extra prices.
+Bots write this. A human pastes after hours. Do not invent extra prices.
 
-## X · @EP19880205
+## X · brand handle
 
 Checkers this week: whole chicken from R47.99 and Crystal Valley milk R27.99 (was R34.99). Catalogue to 6 Sep.
 If you fly CPT-JNB, September is the cheap month — from about R1,230 one way. Confirm before you tap.
@@ -35,6 +35,6 @@ Send this to the person who always says groceries are impossible this month.
 
 ## Tonight's 3-minute move
 
-1. Paste the X draft on @EP19880205.
+1. Paste the X draft on the brand handle.
 2. Put the Status line on WhatsApp.
 3. Stop.

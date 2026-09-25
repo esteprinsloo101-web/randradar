@@ -10,7 +10,7 @@ Checkers this week (to 6 Sep):
 CPT-JNB: look at September, from about R1,230 one way — confirm on Travelstart before you book.
 Reply WATCH MILK if you want a ping next drop.
 
-## X / @EP19880205 (draft only)
+## X (draft only)
 
 Checkers this week: whole chicken from R47.99 and Crystal Valley milk R27.99.
 If you fly CPT-JNB, September is the cheap month — from about R1,230 one way on FlySafair aggregators. Confirm before you tap.
