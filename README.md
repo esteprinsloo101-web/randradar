@@ -17,7 +17,7 @@ GitHub Pages deploys from `main` / repository root (`index.html` + `deals.json`)
 - **Categories:** Groceries · Diesel/Petrol · Travel · Accommodation · Other
 - **Positioning:** weekly area digest board — **not** a live 7-retailer price engine
 - **Seed data:** DEMO / example only (`demo: true` on every deal)
-- **Soft CTA:** R99 Pro weekly pack — Coming soon (Gumroad later). Browsing never paywalled.
+- **Soft CTA:** live Plain Desk pack (Stokvel OS on Gumroad). Browsing never paywalled. No Pro tier.
 
 ## How it works
 
@@ -52,7 +52,7 @@ python3 -m http.server 8080
 
 ## Money rails
 
-See `MONEY.md`. Pro weekly pack (R99) via Gumroad later; Travelstart / Booking / SafariNow affiliates when approved.
+See `MONEY.md`. No Pro tier; Travelstart / Booking / SafariNow affiliates when approved.
 
 ## Stack
 

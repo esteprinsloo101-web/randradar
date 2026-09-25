@@ -26,4 +26,4 @@ Send email. Post to X. Spend ads. Use Stripe. Invent a rand figure. Interrupt th
 - Seed `deals.json` entries must stay labelled **DEMO** (`demo: true`).
 - Never invent a rand figure as live-scraped truth. Catalogue / pump quotes need human confirm.
 - No login scraping. Affiliate disclosure later.
-- Soft CTA only: R99 Pro weekly pack Coming soon (Gumroad later). Public board stays free.
+- Soft CTA only: live Plain Desk pack (Stokvel OS). No Pro tier. Public board stays free.
