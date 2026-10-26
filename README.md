@@ -52,7 +52,7 @@ python3 -m http.server 8080
 
 ## Money rails
 
-See `MONEY.md`. No Pro tier; Travelstart / Booking / SafariNow affiliates when approved.
+No Pro tier; Travelstart / Booking / SafariNow affiliates when approved.
 
 ## Stack
 
